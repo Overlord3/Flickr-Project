@@ -24,4 +24,12 @@
  */
 - (void)setImageWithData:(NSData*)imageData atNumber:(NSInteger)number;
 
+/**
+ Показывает алерт с заголовком и сообщением и действием ОК
+
+ @param title Заголовок сообщения
+ @param message Текст сообщения
+ */
+- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message;
+
 @end

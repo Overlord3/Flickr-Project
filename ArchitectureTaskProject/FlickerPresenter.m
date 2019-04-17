@@ -39,12 +39,24 @@
 
 /**
  Нажата кнопка поиска
+ Проверяем, что там только английские буквы и цифры, иначе алерт
  
  @param searchText текст поиска
  */
 - (void)searchActionStartWithSearchText:(NSString *)searchText
 {
-	[self.networkService findFlickrPhotoWithSearchString:searchText];
+	NSCharacterSet *englishLettersWithNumbers = [NSCharacterSet characterSetWithCharactersInString: @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"];
+
+	NSCharacterSet *notLetters = [englishLettersWithNumbers invertedSet];
+	NSRange range = [searchText rangeOfCharacterFromSet:notLetters];
+	if (range.location == NSNotFound)
+	{
+		[self.networkService findFlickrPhotoWithSearchString:searchText];
+	}
+	else
+	{
+		[self.flickerView showAlertWithTitle:@"Неправильный формат" message:@"Можно использовать только английский алфавит и цифры."];
+	}
 }
 
 
