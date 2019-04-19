@@ -10,27 +10,31 @@
 #import "FlickrViewController.h"
 #import "CustomCollectionViewLayout.h"
 #import "ImageCollectionViewCell.h"
-#import "ImageViewController.h"
+#import "CollectionViewDelegate.h"
 
 
-@interface FlickrViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
+@interface FlickrViewController () <UISearchBarDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar; /**< Строка поиска */
 @property (nonatomic, strong) UICollectionView *collectionView; /**< Коллекшн вью для картинок */
 
 @property (nonatomic, strong) NSMutableArray<UIImage *> *imagesArray; /**< Массив данных картинок */
+@property (nonatomic, strong) CollectionViewDelegate *delegate; /**< Реализует протоколы UICollectionViewDataSource и UICollectionViewDelegate */
 
 @end
+
 
 @implementation FlickrViewController
 
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
-	//Подговим UI
-	[self prepareUI];
+	
 	//Подготовим массив
 	self.imagesArray = [NSMutableArray new];
+	self.delegate = [CollectionViewDelegate initWithArray:self.imagesArray navigationController:self.navigationController];
+	//Подговим UI
+	[self prepareUI];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -62,45 +66,9 @@
 	
 	self.collectionView.backgroundColor = UIColor.whiteColor;
 	[self.collectionView registerClass:ImageCollectionViewCell.class forCellWithReuseIdentifier:ImageCollectionViewCell.description];
-	self.collectionView.dataSource = self;
-	self.collectionView.delegate = self;
+	self.collectionView.dataSource = self.delegate;
+	self.collectionView.delegate = self.delegate;
 	[self.view addSubview:self.collectionView];
-}
-
-
-#pragma UICollectionViewDataSource
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-	return 1;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
-	return self.imagesArray.count;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-	ImageCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ImageCollectionViewCell.description forIndexPath:indexPath];
-	
-	if (indexPath.item < self.imagesArray.count && self.imagesArray[indexPath.item] != nil)
-	{
-		[cell setImage:self.imagesArray[indexPath.item]];
-	}
-	
-	return cell;
-}
-
-
-#pragma UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-	//Открывать новый контроллер
-	ImageViewController *imageViewController = [ImageViewController new];
-	[imageViewController setImage:self.imagesArray[indexPath.item]];
-	[self.navigationController pushViewController:imageViewController animated:true];
 }
 
 

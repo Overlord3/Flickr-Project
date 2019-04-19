@@ -11,7 +11,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface CollectionViewDelegate : NSObject<UICollectionViewDataSource, UICollectionViewDelegate>
+
++ (instancetype) initWithArray:(NSMutableArray<UIImage *> *)array navigationController:(UINavigationController *)navigationController;
+
+@property (nonatomic, weak) NSMutableArray<UIImage *> *imagesArray; /**< Массив данных картинок */
+@property (nonatomic, weak) UINavigationController *navigationController; /**< Контроллер для перехода на следующий экран */
 
 @end
 
