@@ -1,5 +1,5 @@
-# ArchitectureProject
-My MVP-Architecture project, Find images with Flickr service.
+# Flickr Project
+My Flickr project, Find images with Flickr service.
 
 Я использовал архитектуру MVP (Model-View-Presenter).
 Спроектировал и реализовал View (FlickerViewController), Presenter(FlickerPresenter) и Model в виде сервиса (NetworkService).
