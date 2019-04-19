@@ -8,8 +8,8 @@
 
 
 #import "AppDelegate.h"
-#import "FlickerViewController.h"
-#import "FlickerPresenter.h"
+#import "FlickrViewController.h"
+#import "FlickrPresenter.h"
 
 
 @interface AppDelegate ()
@@ -23,13 +23,13 @@
 {	
 	//Сборка архитектуры, создаем View, Presenter, NavigationController, Window и собираем
 	
-	FlickerViewController *flickerViewController = [FlickerViewController new];
-	FlickerPresenter *presenter = [[FlickerPresenter alloc] init];
+	FlickrViewController *flickrViewController = [FlickrViewController new];
+	FlickrPresenter *presenter = [[FlickrPresenter alloc] init];
 	
-	flickerViewController.presenter = presenter;
-	presenter.flickerView = flickerViewController;
+	flickrViewController.presenter = presenter;
+	presenter.flickrView = flickrViewController;
 	
-	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:flickerViewController];
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:flickrViewController];
 	
 	self.window = [UIWindow new];
 	[self.window setRootViewController:navController];

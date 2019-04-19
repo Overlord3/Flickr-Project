@@ -1,5 +1,5 @@
 //
-//  FlickerViewController.m
+//  FlickrViewController.m
 //  NSUrlRequestProject
 //
 //  Created by Александр Плесовских on 17/04/2019.
@@ -7,13 +7,13 @@
 //
 
 
-#import "FlickerViewController.h"
+#import "FlickrViewController.h"
 #import "CustomCollectionViewLayout.h"
 #import "ImageCollectionViewCell.h"
 #import "ImageViewController.h"
 
 
-@interface FlickerViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
+@interface FlickrViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar; /**< Строка поиска */
 @property (nonatomic, strong) UICollectionView *collectionView; /**< Коллекшн вью для картинок */
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation FlickerViewController
+@implementation FlickrViewController
 
 - (void)viewDidLoad
 {
@@ -115,7 +115,7 @@
 }
 
 
-#pragma FlickerViewProtocol
+#pragma FlickrViewProtocol
 
 /**
  Задает размер массива с изображениями и количество ячеек в коллекшн вью

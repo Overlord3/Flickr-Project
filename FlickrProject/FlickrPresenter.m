@@ -1,5 +1,5 @@
 //
-//  FlickerPresenter.m
+//  FlickrPresenter.m
 //  NSUrlRequestProject
 //
 //  Created by Александр Плесовских on 17/04/2019.
@@ -7,18 +7,11 @@
 //
 
 
-#import "FlickerPresenter.h"
+#import "FlickrPresenter.h"
 #import "NetworkService.h"
 
 
-@interface FlickerPresenter ()
-
-@property (nonatomic, strong) NetworkService* networkService; /**< Сервис для архитектуры MVP */
-
-@end
-
-
-@implementation FlickerPresenter 
+@implementation FlickrPresenter 
 
 - (instancetype)init
 {
@@ -27,15 +20,14 @@
 	{
 		//Инициализация
 		//Подготовим сервис
-		self.networkService = [NetworkService initWithUrlConfiguration:nil];
-		self.networkService.outputDelegate = self;
-		
+		_networkService = [NetworkService initWithUrlConfiguration:nil];
+		_networkService.outputDelegate = self;
 	}
 	return self;
 }
 
 
-#pragma FlickerViewProtocol
+#pragma FlickrViewProtocol
 
 /**
  Нажата кнопка поиска
@@ -55,7 +47,7 @@
 	}
 	else
 	{
-		[self.flickerView showAlertWithTitle:@"Неправильный формат" message:@"Можно использовать только английский алфавит и цифры."];
+		[self.flickrView showAlertWithTitle:@"Неправильный формат" message:@"Можно использовать только английский алфавит и цифры."];
 	}
 }
 
@@ -73,7 +65,7 @@
 	//Проверка, что данные есть
 	if (imageData != nil)
 	{
-		[self.flickerView setImageWithData:imageData atNumber:number];
+		[self.flickrView setImageWithData:imageData atNumber:number];
 	}
 }
 
@@ -84,7 +76,7 @@
  */
 - (void)prepareArrayForImagesCount:(NSInteger)count
 {
-	[self.flickerView setImageArrayCount:count];
+	[self.flickrView setImageArrayCount:count];
 }
 
 @end

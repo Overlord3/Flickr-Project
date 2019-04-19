@@ -1,5 +1,5 @@
 //
-//  FlickerPresenterProtocol.h
+//  FlickrPresenterProtocol.h
 //  NSUrlRequestProject
 //
 //  Created by Александр Плесовских on 17/04/2019.
@@ -7,7 +7,7 @@
 //
 
 
-@protocol FlickerPresenterProtocol <NSObject>
+@protocol FlickrPresenterProtocol <NSObject>
 
 /**
  Нажата кнопка поиска

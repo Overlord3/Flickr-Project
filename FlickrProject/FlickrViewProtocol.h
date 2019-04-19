@@ -1,5 +1,5 @@
 //
-//  FlickerViewProtocol.h
+//  FlickrViewProtocol.h
 //  NSUrlRequestProject
 //
 //  Created by Александр Плесовских on 17/04/2019.
@@ -7,7 +7,7 @@
 //
 
 
-@protocol FlickerViewProtocol <NSObject>
+@protocol FlickrViewProtocol <NSObject>
 
 /**
  Задает размер массива с изображениями и количество ячеек в коллекшн вью
