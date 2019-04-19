@@ -30,14 +30,17 @@
 	self = [super initWithFrame:frame];
 	if (self)
 	{
-		self.imageView = [UIImageView new];
-		self.imageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-		//self.imageView = [[UIImageView alloc] initWithFrame:frame];
-		self.imageView.backgroundColor = UIColor.blueColor;
-		
-		[self addSubview:self.imageView];
+		_imageView = [UIImageView new];
+		_imageView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+		_imageView.backgroundColor = UIColor.blueColor;
 	}
 	return self;
+}
+
+- (void)layoutSubviews
+{
+	[super layoutSubviews];
+	[self addSubview:self.imageView];
 }
 
 /**

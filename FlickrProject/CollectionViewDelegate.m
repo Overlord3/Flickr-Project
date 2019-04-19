@@ -3,7 +3,7 @@
 //  FlickrProject
 //
 //  Created by Александр Плесовских on 20/04/2019.
-//  Copyright © 2019 Alexey Levanov. All rights reserved.
+//  Copyright © 2019 Alex. All rights reserved.
 //
 
 
