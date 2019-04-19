@@ -22,7 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1FC25EC21FD00489009C5C73 /* ArchitectureTaskProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArchitectureTaskProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FC25EC21FD00489009C5C73 /* FlickerProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickerProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FC25EC51FD00489009C5C73 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1FC25EC61FD00489009C5C73 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1FC25ECE1FD00489009C5C73 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		1FC25EB91FD00489009C5C73 = {
 			isa = PBXGroup;
 			children = (
-				1FC25EC41FD00489009C5C73 /* ArchitectureTaskProject */,
+				1FC25EC41FD00489009C5C73 /* FlickrProject */,
 				1FC25EC31FD00489009C5C73 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -72,12 +72,12 @@
 		1FC25EC31FD00489009C5C73 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1FC25EC21FD00489009C5C73 /* ArchitectureTaskProject.app */,
+				1FC25EC21FD00489009C5C73 /* FlickerProject.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1FC25EC41FD00489009C5C73 /* ArchitectureTaskProject */ = {
+		1FC25EC41FD00489009C5C73 /* FlickrProject */ = {
 			isa = PBXGroup;
 			children = (
 				FA7FD2DE2266B93300D1DA1C /* CustomCollectionViewLayout */,
@@ -92,7 +92,7 @@
 				1FC25ED31FD00489009C5C73 /* Info.plist */,
 				1FC25ED41FD00489009C5C73 /* main.m */,
 			);
-			path = ArchitectureTaskProject;
+			path = FlickrProject;
 			sourceTree = "<group>";
 		};
 		FA7FD2DE2266B93300D1DA1C /* CustomCollectionViewLayout */ = {
@@ -160,9 +160,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1FC25EC11FD00489009C5C73 /* ArchitectureTaskProject */ = {
+		1FC25EC11FD00489009C5C73 /* FlickerProject */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1FC25ED81FD00489009C5C73 /* Build configuration list for PBXNativeTarget "ArchitectureTaskProject" */;
+			buildConfigurationList = 1FC25ED81FD00489009C5C73 /* Build configuration list for PBXNativeTarget "FlickerProject" */;
 			buildPhases = (
 				1FC25EBE1FD00489009C5C73 /* Sources */,
 				1FC25EBF1FD00489009C5C73 /* Frameworks */,
@@ -172,9 +172,9 @@
 			);
 			dependencies = (
 			);
-			name = ArchitectureTaskProject;
+			name = FlickerProject;
 			productName = NSUrlRequestProject;
-			productReference = 1FC25EC21FD00489009C5C73 /* ArchitectureTaskProject.app */;
+			productReference = 1FC25EC21FD00489009C5C73 /* FlickerProject.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -192,7 +192,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1FC25EBD1FD00489009C5C73 /* Build configuration list for PBXProject "ArchitectureTaskProject" */;
+			buildConfigurationList = 1FC25EBD1FD00489009C5C73 /* Build configuration list for PBXProject "FlickerProject" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -205,7 +205,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1FC25EC11FD00489009C5C73 /* ArchitectureTaskProject */,
+				1FC25EC11FD00489009C5C73 /* FlickerProject */,
 			);
 		};
 /* End PBXProject section */
@@ -368,7 +368,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 68RG3R5754;
-				INFOPLIST_FILE = "$(SRCROOT)/ArchitectureTaskProject/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/FlickrProject/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alex.ArchitectureTaskProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -382,7 +382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 68RG3R5754;
-				INFOPLIST_FILE = "$(SRCROOT)/ArchitectureTaskProject/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/FlickrProject/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.alex.ArchitectureTaskProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -393,7 +393,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1FC25EBD1FD00489009C5C73 /* Build configuration list for PBXProject "ArchitectureTaskProject" */ = {
+		1FC25EBD1FD00489009C5C73 /* Build configuration list for PBXProject "FlickerProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1FC25ED61FD00489009C5C73 /* Debug */,
@@ -402,7 +402,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1FC25ED81FD00489009C5C73 /* Build configuration list for PBXNativeTarget "ArchitectureTaskProject" */ = {
+		1FC25ED81FD00489009C5C73 /* Build configuration list for PBXNativeTarget "FlickerProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1FC25ED91FD00489009C5C73 /* Debug */,

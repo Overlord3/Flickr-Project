@@ -24,7 +24,7 @@
 	self = [super init];
 	if (self)
 	{
-		self.imageView = [UIImageView new];
+		_imageView = [UIImageView new];
 	}
 	return self;
 }
