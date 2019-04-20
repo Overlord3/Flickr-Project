@@ -20,6 +20,7 @@
 		FA7FD2ED2267A81200D1DA1C /* FlickrPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7FD2EC2267A81200D1DA1C /* FlickrPresenter.m */; };
 		FA7FD2F42267B05A00D1DA1C /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7FD2F32267B05A00D1DA1C /* ImageViewController.m */; };
 		FAB2FC38226A7ABD0071181F /* CollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB2FC37226A7ABD0071181F /* CollectionViewDelegate.m */; };
+		FAB2FC3E226AB2880071181F /* FilterController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB2FC3D226AB2880071181F /* FilterController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		FA7FD2F32267B05A00D1DA1C /* ImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		FAB2FC36226A7ABD0071181F /* CollectionViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewDelegate.h; sourceTree = "<group>"; };
 		FAB2FC37226A7ABD0071181F /* CollectionViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewDelegate.m; sourceTree = "<group>"; };
+		FAB2FC3C226AB2880071181F /* FilterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterController.h; sourceTree = "<group>"; };
+		FAB2FC3D226AB2880071181F /* FilterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +157,7 @@
 				FA7FD2F12267A8A700D1DA1C /* FlickrViewProtocol.h */,
 				FAB2FC3A226A7B1C0071181F /* FlickrViewController */,
 				FAB2FC39226A7B0B0071181F /* ImageViewController */,
+				FAB2FC3F226AB3F90071181F /* FilterController */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -176,6 +180,15 @@
 				FAB2FC37226A7ABD0071181F /* CollectionViewDelegate.m */,
 			);
 			name = FlickrViewController;
+			sourceTree = "<group>";
+		};
+		FAB2FC3F226AB3F90071181F /* FilterController */ = {
+			isa = PBXGroup;
+			children = (
+				FAB2FC3C226AB2880071181F /* FilterController.h */,
+				FAB2FC3D226AB2880071181F /* FilterController.m */,
+			);
+			name = FilterController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +268,7 @@
 				FA7FD2E82266D08000D1DA1C /* ImageRequest.m in Sources */,
 				FA7FD2F42267B05A00D1DA1C /* ImageViewController.m in Sources */,
 				1FC25EE51FD02AF2009C5C73 /* NetworkHelper.m in Sources */,
+				FAB2FC3E226AB2880071181F /* FilterController.m in Sources */,
 				FA7FD2E12266B95300D1DA1C /* CustomCollectionViewLayout.m in Sources */,
 				FA7FD2DD2266B86F00D1DA1C /* FlickrViewController.m in Sources */,
 				FAB2FC38226A7ABD0071181F /* CollectionViewDelegate.m in Sources */,

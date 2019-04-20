@@ -8,7 +8,7 @@
 
 
 #import <UIKit/UIKit.h>
-
+#import "FilterController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,11 +16,14 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ImageViewController : UIViewController
 
 /**
- Установка изображения для вью контроллера
+ Инициализатор с изображением
 
  @param image Изображение
+ @return Обьект вью контроллера
  */
-- (void) setImage: (UIImage *)image;
++ (instancetype)initViewControllerWithImage:(UIImage *)image;
+
+@property (nonatomic,strong) FilterController *filterController;
 
 @end
 

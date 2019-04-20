@@ -52,8 +52,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	//Открывать новый контроллер
-	ImageViewController *imageViewController = [ImageViewController new];
-	[imageViewController setImage:self.imagesArray[indexPath.item]];
+	ImageViewController *imageViewController = [ImageViewController initViewControllerWithImage:self.imagesArray[indexPath.item]];
 	[self.navigationController pushViewController:imageViewController animated:true];
 }
 
