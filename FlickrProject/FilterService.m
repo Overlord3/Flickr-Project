@@ -1,16 +1,16 @@
 //
-//  FilterController.m
-//  FlickerProject
+//  FilterService.m
+//  FlickrProject
 //
 //  Created by Александр Плесовских on 20/04/2019.
 //  Copyright © 2019 Alex. All rights reserved.
 //
 
 
-#import "FilterController.h"
+#import "FilterService.h"
 
 
-@implementation FilterController
+@implementation FilterService
 
 
 #pragma Фильтры по типам
@@ -52,6 +52,15 @@
 
 #pragma Применение фильтров
 
+
+/**
+ Применяет фильтр к изображению по имени и с параметрами
+
+ @param image Изображение
+ @param filterName Имя фильтра
+ @param params параметры для фильтра
+ @return Измененное изображение
+ */
 - (UIImage *) addFilterForImage:(UIImage *)image withName:(NSString *)filterName andParams:(NSDictionary *)params
 {
 	CIImage *ciimage = [CIImage imageWithCGImage:image.CGImage];

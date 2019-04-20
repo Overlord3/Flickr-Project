@@ -1,6 +1,6 @@
 //
 //  ImageViewController.h
-//  NSUrlRequestProject
+//  FlickrProject
 //
 //  Created by Александр Плесовских on 17/04/2019.
 //  Copyright © 2019 Alex. All rights reserved.
@@ -8,7 +8,8 @@
 
 
 #import <UIKit/UIKit.h>
-#import "FilterController.h"
+#import "FilterService.h"
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (instancetype)initViewControllerWithImage:(UIImage *)image;
 
-@property (nonatomic,strong) FilterController *filterController;
+@property (nonatomic,strong) FilterService *filterService; /**< Сервис фильтров */
 
 @end
 

@@ -1,6 +1,6 @@
 //
 //  ImageViewController.m
-//  NSUrlRequestProject
+//  FlickrProject
 //
 //  Created by Александр Плесовских on 17/04/2019.
 //  Copyright © 2019 Alex. All rights reserved.
@@ -9,15 +9,16 @@
 
 #import "ImageViewController.h"
 
+
 @interface ImageViewController ()
 
-@property (nonatomic, strong) UIImage *baseImage;
-@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIImage *baseImage; /**< Изначальное изображение */
+@property (nonatomic, strong) UIImageView *imageView; /**< Показывает изображение */
 
-@property (nonatomic, strong) UIButton *sepiaFilterButton;
-@property (nonatomic, strong) UIButton *monoFilterButton;
-@property (nonatomic, strong) UIButton *colorInvertFilterButton;
-@property (nonatomic, strong) UIButton *resetFilterButton;
+@property (nonatomic, strong) UIButton *sepiaFilterButton; /**< Кнопка фильтра Сепия */
+@property (nonatomic, strong) UIButton *monoFilterButton; /**< Кнопка фильтра Моно */
+@property (nonatomic, strong) UIButton *colorInvertFilterButton; /**< Кнопка фильтра Инвертирование цвета */
+@property (nonatomic, strong) UIButton *resetFilterButton; /**< Кнопка сброса фильтров */
 
 @end
 
@@ -49,7 +50,7 @@
 	{
 		_imageView = [UIImageView new];
 		_baseImage = [UIImage new];
-		_filterController = [FilterController new];
+		_filterService = [FilterService new];
 	}
 	return self;
 }
@@ -133,7 +134,7 @@
  */
 - (void) sepiaFilterAction
 {
-	UIImage *filteredImage = [self.filterController addSepiaFilterToImage:self.baseImage];
+	UIImage *filteredImage = [self.filterService addSepiaFilterToImage:self.baseImage];
 	self.imageView.image = filteredImage;
 }
 
@@ -142,7 +143,7 @@
  */
 - (void) monoFilterAction
 {
-	UIImage *filteredImage = [self.filterController addMonoFilterToImage:self.baseImage];
+	UIImage *filteredImage = [self.filterService addMonoFilterToImage:self.baseImage];
 	self.imageView.image = filteredImage;
 }
 
@@ -151,7 +152,7 @@
  */
 - (void) colorInvertFilterAction
 {
-	UIImage *filteredImage = [self.filterController addColorInvertFilterToImage:self.baseImage];
+	UIImage *filteredImage = [self.filterService addColorInvertFilterToImage:self.baseImage];
 	self.imageView.image = filteredImage;
 }
 
@@ -162,6 +163,5 @@
 {
 	self.imageView.image = self.baseImage;
 }
-
 
 @end
