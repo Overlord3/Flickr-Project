@@ -1,6 +1,6 @@
 //
 //  ImageCollectionViewCell.h
-//  NSUrlRequestProject
+//  FlickrProject
 //
 //  Created by Александр Плесовских on 17/04/2019.
 //  Copyright © 2019 Alex. All rights reserved.
