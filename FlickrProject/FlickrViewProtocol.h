@@ -32,4 +32,11 @@
  */
 - (void)showAlertWithTitle:(NSString *)title message:(NSString *)message;
 
+/**
+ Поиск с параметрами, используется для обработки пуш-уведомлений
+
+ @param text текст для поиска
+ */
+- (void)searchImagesWithText:(NSString *)text;
+
 @end

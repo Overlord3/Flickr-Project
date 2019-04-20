@@ -10,9 +10,10 @@
 #import "AppDelegate.h"
 #import "FlickrViewController.h"
 #import "FlickrPresenter.h"
+#import <UserNotifications/UserNotifications.h>
 
 
-@interface AppDelegate ()
+@interface AppDelegate () <UNUserNotificationCenterDelegate>
 
 @end
 
@@ -20,9 +21,11 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{	
-	//Сборка архитектуры, создаем View, Presenter, NavigationController, Window и собираем
+{
+	//Локальные пуш-уведомления
+	[self prepareForNotifications];
 	
+	//Сборка архитектуры, создаем View, Presenter, NavigationController, Window и собираем
 	FlickrViewController *flickrViewController = [FlickrViewController new];
 	FlickrPresenter *presenter = [[FlickrPresenter alloc] init];
 	
@@ -69,5 +72,62 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+#pragma LocalNotifications
+
+- (void) prepareForNotifications
+{
+	// Получаем текущий notificationCenter
+	UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+	
+	// Устанавливаем делегат
+	center.delegate = self;
+	
+	// Указываем тип пушей для работы
+	UNAuthorizationOptions options = UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge;
+	
+	// Запрашиваем доступ на работу с пушами
+	[center requestAuthorizationWithOptions:options
+						  completionHandler:^(BOOL granted, NSError * _Nullable error) {
+							  if (!granted)
+							  {
+								  NSLog(@"Доступ не дали");
+							  }
+						  }];
+}
+
+#pragma mark - UNUserNotificationCenterDelegate
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+	   willPresentNotification:(UNNotification *)notification
+		 withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
+{
+	if (completionHandler)
+	{
+		completionHandler(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge);
+	}
+}
+
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center
+didReceiveNotificationResponse:(UNNotificationResponse *)response
+		 withCompletionHandler:(void(^)(void))completionHandler
+{
+	UNNotificationContent *content = response.notification.request.content;
+	
+	if (content.userInfo[@"searchRequest"])
+	{
+		UINavigationController *navigationController = self.window.rootViewController;
+		//Возвращаемся назад, если мы не на контроллере поиска
+		[navigationController popToRootViewControllerAnimated:YES];
+		FlickrViewController *flickrController = [navigationController topViewController];
+		[flickrController searchImagesWithText:content.userInfo[@"searchRequest"]];
+	}
+	
+	if (completionHandler)
+	{
+		completionHandler();
+	}
+}
+
 
 @end

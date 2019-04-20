@@ -22,8 +22,10 @@
 @property (nonatomic, strong) NSMutableArray<UIImage *> *imagesArray; /**< Массив данных картинок */
 @property (nonatomic, strong) CollectionViewDataSource *dataSource; /**< Реализует протокол UICollectionViewDataSource */
 
-@property (nonatomic, assign) NSInteger currentPageNumber; /**< Текущая страница */
+@property (nonatomic, assign) NSInteger currentPageNumber; /**< Номер текущей страницы */
 @property (nonatomic, assign) BOOL isLoading; /**< Флаг загрузки изображений, предотвращает двойную загрузку */
+
+@property (nonatomic, strong) NSString *previousRequest; /**< Предыдущий запрос, нужен для уведомлений */
 
 @end
 
@@ -39,7 +41,10 @@
 	self.dataSource = [CollectionViewDataSource initWithArray:self.imagesArray];
 	//Подговим UI
 	[self prepareUI];
+	//Подготовим сервис уведомлений
+	self.notificationService = [NotificationsService new];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -88,6 +93,19 @@
 	[self.imagesArray removeAllObjects];
 	[self setArraySize:20];
 	
+	//Отправить уведомление
+	if (self.previousRequest == nil)
+	{
+		self.previousRequest = searchBar.text;
+	}
+	else
+	{
+		//Сформируем
+		NSString *title = [NSString stringWithFormat:@"Вы давно не искали картинки по теме - %@!", self.previousRequest];
+		[self.notificationService sendLocalNotificationAfterSeconds:10 withTitle:title andSearchText: self.previousRequest];
+		//Перезапишем предыдущий запрос
+		self.previousRequest = searchBar.text;
+	}
 	//Вызвать поиск
 	self.currentPageNumber = 1;
 	[self.presenter searchActionStartWithSearchText:searchBar.text];
@@ -103,6 +121,11 @@
 	[self.navigationController pushViewController:imageViewController animated:true];
 }
 
+/**
+ Этот делегат здесь из-за этого метода, чтобы при прокрутке загружать следующую страницу
+
+ @param scrollView Это CollectionView с картинками
+ */
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
 	CGFloat offsetY = scrollView.contentOffset.y;
@@ -176,6 +199,13 @@
 	[alertController addAction:alertAction];
 	
 	[self presentViewController:alertController animated:true completion:nil];
+}
+
+
+- (void)searchImagesWithText:(NSString *)text
+{
+	[self.searchBar setText:text];
+	[self searchBarSearchButtonClicked:self.searchBar];
 }
 
 @end

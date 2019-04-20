@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "FlickrViewProtocol.h"
 #import "FlickrPresenterProtocol.h"
+#import "NotificationsService.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -18,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FlickrViewController : UIViewController<FlickrViewProtocol>
 
 @property (nonatomic,strong) id<FlickrPresenterProtocol> presenter; /**< Презентер для архитектуры MVP */
+@property (nonatomic,strong) NotificationsService *notificationService; /**< Сервис для уведомления */
 
 @end
 
