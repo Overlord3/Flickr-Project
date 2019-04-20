@@ -201,7 +201,11 @@
 	[self presentViewController:alertController animated:true completion:nil];
 }
 
-
+/**
+ Поиск с параметрами, используется для обработки пуш-уведомлений
+ 
+ @param text текст для поиска
+ */
 - (void)searchImagesWithText:(NSString *)text
 {
 	[self.searchBar setText:text];

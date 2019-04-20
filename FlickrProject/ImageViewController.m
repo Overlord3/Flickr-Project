@@ -86,6 +86,7 @@
 	CGFloat border = 10;
 	CGFloat buttonWidth = width - border*2;
 	CGFloat yOffset = CGRectGetMaxY(self.imageView.frame) + border;
+	
 	//Кнопка фильтра Сепия
 	self.sepiaFilterButton = [UIButton buttonWithType:UIButtonTypeCustom];
 	self.sepiaFilterButton.frame = CGRectMake(border, yOffset, buttonWidth, buttonHeight);
