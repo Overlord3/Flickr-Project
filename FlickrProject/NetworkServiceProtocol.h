@@ -46,10 +46,11 @@
 
 /**
  Поиск изображений в сервисе
-
+ 
  @param searchSrting Строка поиска, на английском обязательно
+ @param page Номер страницы, с 1
  */
-- (void)findFlickrPhotoWithSearchString:(NSString *)searchSrting;
+- (void)findFlickrPhotoWithSearchString:(NSString *)searchSrting andPage:(NSInteger)page;
 
 
 /**

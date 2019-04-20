@@ -1,5 +1,5 @@
 //
-//  CollectionViewDelegate.m
+//  CollectionViewDataSource.m
 //  FlickrProject
 //
 //  Created by Александр Плесовских on 20/04/2019.
@@ -7,19 +7,17 @@
 //
 
 
-#import "CollectionViewDelegate.h"
-#import "ImageViewController.h"
+#import "CollectionViewDataSource.h"
 #import "ImageCollectionViewCell.h"
 
 
-@implementation CollectionViewDelegate
+@implementation CollectionViewDataSource
 
-+ (instancetype) initWithArray:(NSMutableArray<UIImage *> *)array navigationController:(UINavigationController *)navigationController
++ (instancetype) initWithArray:(NSMutableArray<UIImage *> *)array
 {
-	CollectionViewDelegate *delegate = [CollectionViewDelegate new];
-	delegate.imagesArray = array;
-	delegate.navigationController = navigationController;
-	return delegate;
+	CollectionViewDataSource *dataSource = [CollectionViewDataSource new];
+	dataSource.imagesArray = array;
+	return dataSource;
 }
 
 
@@ -45,16 +43,6 @@
 	}
 	
 	return cell;
-}
-
-
-#pragma UICollectionViewDelegate
-
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-	//Открывать новый контроллер
-	ImageViewController *imageViewController = [ImageViewController initViewControllerWithImage:self.imagesArray[indexPath.item]];
-	[self.navigationController pushViewController:imageViewController animated:true];
 }
 
 @end

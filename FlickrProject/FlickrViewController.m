@@ -10,16 +10,20 @@
 #import "FlickrViewController.h"
 #import "CustomCollectionViewLayout.h"
 #import "ImageCollectionViewCell.h"
-#import "CollectionViewDelegate.h"
+#import "CollectionViewDataSource.h"
+#import "ImageViewController.h"
 
 
-@interface FlickrViewController () <UISearchBarDelegate>
+@interface FlickrViewController () <UISearchBarDelegate, UICollectionViewDelegate>
 
 @property (nonatomic, strong) UISearchBar *searchBar; /**< Строка поиска */
 @property (nonatomic, strong) UICollectionView *collectionView; /**< Коллекшн вью для картинок */
 
 @property (nonatomic, strong) NSMutableArray<UIImage *> *imagesArray; /**< Массив данных картинок */
-@property (nonatomic, strong) CollectionViewDelegate *delegate; /**< Реализует протоколы UICollectionViewDataSource и UICollectionViewDelegate */
+@property (nonatomic, strong) CollectionViewDataSource *dataSource; /**< Реализует протокол UICollectionViewDataSource */
+
+@property (nonatomic, assign) NSInteger currentPageNumber; /**< Текущая страница */
+@property (nonatomic, assign) BOOL isLoading; /**< Флаг загрузки изображений, предотвращает двойную загрузку */
 
 @end
 
@@ -32,7 +36,7 @@
 	
 	//Подготовим массив
 	self.imagesArray = [NSMutableArray new];
-	self.delegate = [CollectionViewDelegate initWithArray:self.imagesArray navigationController:self.navigationController];
+	self.dataSource = [CollectionViewDataSource initWithArray:self.imagesArray];
 	//Подговим UI
 	[self prepareUI];
 }
@@ -66,8 +70,8 @@
 	
 	self.collectionView.backgroundColor = UIColor.whiteColor;
 	[self.collectionView registerClass:ImageCollectionViewCell.class forCellWithReuseIdentifier:ImageCollectionViewCell.description];
-	self.collectionView.dataSource = self.delegate;
-	self.collectionView.delegate = self.delegate;
+	self.collectionView.dataSource = self.dataSource;
+	self.collectionView.delegate = self;
 	[self.view addSubview:self.collectionView];
 }
 
@@ -78,8 +82,41 @@
 {
 	//скрыть клавиатуру
 	[searchBar resignFirstResponder];
+	
+	//Удалить все с прошлого поиска
+	[self.collectionView setContentOffset:CGPointZero animated:YES];
+	[self.imagesArray removeAllObjects];
+	[self setArraySize:20];
+	
 	//Вызвать поиск
+	self.currentPageNumber = 1;
 	[self.presenter searchActionStartWithSearchText:searchBar.text];
+}
+
+
+#pragma UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+	//Открывать новый контроллер
+	ImageViewController *imageViewController = [ImageViewController initViewControllerWithImage:self.imagesArray[indexPath.item]];
+	[self.navigationController pushViewController:imageViewController animated:true];
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+	CGFloat offsetY = scrollView.contentOffset.y;
+	CGFloat contentHeight = scrollView.contentSize.height;
+	if (offsetY > contentHeight - scrollView.frame.size.height)
+	{
+		//Подгрузим следующую страницу
+		if (!self.isLoading && ![self.searchBar.text isEqual: @""])
+		{
+			self.isLoading = YES;
+			self.currentPageNumber += 1;
+			[self.presenter loadImageWithSearchText:self.searchBar.text atPage:self.currentPageNumber];
+		}
+	}
 }
 
 
@@ -92,10 +129,17 @@
  */
 - (void)setImageArrayCount:(NSInteger)count
 {
+	[self setArraySize:count];
+	self.isLoading = NO;
+}
+
+- (void)setArraySize:(NSInteger)count
+{
 	while (self.imagesArray.count < count)
 	{
 		[self.imagesArray addObject:[UIImage new]];
 	}
+	[self.collectionView reloadData];
 }
 
 /**

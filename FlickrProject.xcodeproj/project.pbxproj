@@ -19,7 +19,7 @@
 		FA7FD2E82266D08000D1DA1C /* ImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7FD2E72266D08000D1DA1C /* ImageRequest.m */; };
 		FA7FD2ED2267A81200D1DA1C /* FlickrPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7FD2EC2267A81200D1DA1C /* FlickrPresenter.m */; };
 		FA7FD2F42267B05A00D1DA1C /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7FD2F32267B05A00D1DA1C /* ImageViewController.m */; };
-		FAB2FC38226A7ABD0071181F /* CollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB2FC37226A7ABD0071181F /* CollectionViewDelegate.m */; };
+		FAB2FC38226A7ABD0071181F /* CollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB2FC37226A7ABD0071181F /* CollectionViewDataSource.m */; };
 		FAB2FC3E226AB2880071181F /* FilterService.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB2FC3D226AB2880071181F /* FilterService.m */; };
 /* End PBXBuildFile section */
 
@@ -50,8 +50,8 @@
 		FA7FD2F12267A8A700D1DA1C /* FlickrViewProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlickrViewProtocol.h; sourceTree = "<group>"; };
 		FA7FD2F22267B05A00D1DA1C /* ImageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		FA7FD2F32267B05A00D1DA1C /* ImageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
-		FAB2FC36226A7ABD0071181F /* CollectionViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewDelegate.h; sourceTree = "<group>"; };
-		FAB2FC37226A7ABD0071181F /* CollectionViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewDelegate.m; sourceTree = "<group>"; };
+		FAB2FC36226A7ABD0071181F /* CollectionViewDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewDataSource.h; sourceTree = "<group>"; };
+		FAB2FC37226A7ABD0071181F /* CollectionViewDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewDataSource.m; sourceTree = "<group>"; };
 		FAB2FC3C226AB2880071181F /* FilterService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterService.h; sourceTree = "<group>"; };
 		FAB2FC3D226AB2880071181F /* FilterService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,8 +176,8 @@
 			children = (
 				FA7FD2DB2266B86F00D1DA1C /* FlickrViewController.h */,
 				FA7FD2DC2266B86F00D1DA1C /* FlickrViewController.m */,
-				FAB2FC36226A7ABD0071181F /* CollectionViewDelegate.h */,
-				FAB2FC37226A7ABD0071181F /* CollectionViewDelegate.m */,
+				FAB2FC36226A7ABD0071181F /* CollectionViewDataSource.h */,
+				FAB2FC37226A7ABD0071181F /* CollectionViewDataSource.m */,
 			);
 			name = FlickrViewController;
 			sourceTree = "<group>";
@@ -271,7 +271,7 @@
 				FAB2FC3E226AB2880071181F /* FilterService.m in Sources */,
 				FA7FD2E12266B95300D1DA1C /* CustomCollectionViewLayout.m in Sources */,
 				FA7FD2DD2266B86F00D1DA1C /* FlickrViewController.m in Sources */,
-				FAB2FC38226A7ABD0071181F /* CollectionViewDelegate.m in Sources */,
+				FAB2FC38226A7ABD0071181F /* CollectionViewDataSource.m in Sources */,
 				FA7FD2ED2267A81200D1DA1C /* FlickrPresenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

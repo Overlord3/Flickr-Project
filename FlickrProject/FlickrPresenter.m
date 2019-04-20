@@ -36,20 +36,30 @@
  */
 - (void)searchActionStartWithSearchText:(NSString *)searchText
 {
-	NSCharacterSet *englishLettersWithNumbers = [NSCharacterSet characterSetWithCharactersInString: @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"];
+	[self loadImageWithSearchText:searchText atPage:1];
+}
 
+/**
+ Загружаем картинки следующей страницы, вызывается при прокрутке collectionView
+ 
+ @param searchText текст поиска
+ @param page номер страницы(с 1)
+ */
+- (void)loadImageWithSearchText:(NSString *)searchText atPage:(NSInteger)page
+{
+	NSCharacterSet *englishLettersWithNumbers = [NSCharacterSet characterSetWithCharactersInString: @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"];
+	
 	NSCharacterSet *notLetters = [englishLettersWithNumbers invertedSet];
 	NSRange range = [searchText rangeOfCharacterFromSet:notLetters];
 	if (range.location == NSNotFound)
 	{
-		[self.networkService findFlickrPhotoWithSearchString:searchText];
+		[self.networkService findFlickrPhotoWithSearchString:searchText andPage:page];
 	}
 	else
 	{
 		[self.flickrView showAlertWithTitle:@"Неправильный формат" message:@"Можно использовать только английский алфавит и цифры."];
 	}
 }
-
 
 #pragma NetworkServiceProtocol
 

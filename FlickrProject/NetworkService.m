@@ -11,6 +11,7 @@
 #import "NetworkHelper.h"
 #import "ImageRequest.h"
 
+const NSInteger imagesPerPage = 20;
 
 @interface NetworkService ()
 
@@ -93,12 +94,15 @@
 	[self.downloadTasksArray removeAllObjects];
 }
 
-- (void)findFlickrPhotoWithSearchString:(NSString *)searchSrting
+- (void)findFlickrPhotoWithSearchString:(NSString *)searchSrting andPage:(NSInteger)page
 {
-	//Отменим все текущие загрузки, если они есть
-	[self cancelCurrentDownloadTasks];
+	if (page == 1)
+	{
+		//Отменим все текущие загрузки, если они есть
+		[self cancelCurrentDownloadTasks];
+	}
 	
-    NSString *urlString = [NetworkHelper URLForSearchString:searchSrting];
+	NSString *urlString = [NetworkHelper URLForSearchString:searchSrting andPage:page];
         
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:[NSURL URLWithString: urlString]];
@@ -115,9 +119,14 @@
 		//Проверяем статус
 		if ([temp[@"stat"] isEqual: @"ok"])
 		{
-			NSInteger counter = 0;
+			NSInteger counter = (page - 1) * imagesPerPage;
 			NSArray<NSDictionary *> *photos = temp[@"photos"][@"photo"];
-			[self.outputDelegate prepareArrayForImagesCount:photos.count];
+			
+			// Отсюда отправим сообщение на обновление UI с главного потока
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[self.outputDelegate prepareArrayForImagesCount: counter + photos.count];
+			});
+			
 			for (NSDictionary *dict in photos)
 			{
 				// Получение фото

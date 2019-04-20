@@ -14,10 +14,11 @@
 
 /**
  Получение URL с запросом к сервису с текстом поиска
-
+ 
  @param searchString текст поиска
+ @param page страница, с 1
  @return URL в строке
  */
-+ (NSString *)URLForSearchString:(NSString *)searchString;
++ (NSString *)URLForSearchString:(NSString *)searchString andPage:(NSInteger)page;
 
 @end

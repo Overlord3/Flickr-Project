@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FlickrPresenter : NSObject<FlickrPresenterProtocol, NetworkServiceOutputProtocol>
 
 @property (nonatomic, weak) id<FlickrViewProtocol> flickrView; /**< Вью для архитектуры MVP */
-@property (nonatomic, strong) NetworkService* networkService; /**< Сервис для архитектуры MVP */
+@property (nonatomic, strong) NetworkService *networkService; /**< Сервис для архитектуры MVP */
 
 @end
 

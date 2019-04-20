@@ -16,4 +16,12 @@
  */
 - (void)searchActionStartWithSearchText:(NSString*)searchText;
 
+/**
+ Загружаем картинки следующей страницы, вызывается при прокрутке collectionView
+ 
+ @param searchText текст поиска
+ @param page номер страницы(с 1)
+ */
+- (void)loadImageWithSearchText:(NSString*)searchText atPage:(NSInteger)page;
+
 @end

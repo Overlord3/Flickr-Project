@@ -40,7 +40,7 @@
 		_borderInset = 16;
 		_itemWidth = (width - 3*_borderInset) / 2;
 		_itemHeight = _itemWidth;
-		_contentBounds = CGRectMake(0, 0, 0, 0);
+		_contentBounds = CGRectZero;
 		_cache = [NSMutableArray new];
 	}
 	return self;
@@ -52,6 +52,9 @@
 - (void)prepareLayout
 {
 	[super prepareLayout];
+	//очистим с прошлого раза заданные значения
+	[self.cache removeAllObjects];
+	self.contentBounds = CGRectZero;
 	
 	//точно одна секция
 	NSInteger itemCount = [self.collectionView numberOfItemsInSection:0];
